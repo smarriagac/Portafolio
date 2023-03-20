@@ -10,7 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: subosito/flutter-action@v2
+      - name: Instalar flutter
+        uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
       - name: Compilando flutter web
@@ -18,12 +19,12 @@ jobs:
           flutter config --enable-web
           flutter pub get
           flutter build web --release
-  deploy:
-      steps:
+      
       - name: Subida a firebase
-      - uses: FirebaseExtended/action-hosting-deploy@v0
+        uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_PORTAFOLIO_870C0 }}'
           channelId: live
           projectId: portafolio-870c0
+
