@@ -18,6 +18,7 @@ jobs:
           flutter config --enable-web
           flutter pub get
           flutter build web --release
+    steps:
       - name: Subida a firebase
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
