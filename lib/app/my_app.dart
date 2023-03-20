@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:portafolio/app/presentation/routes/app_routes.dart';
+import 'presentation/routes/app_routes.dart';
 
 class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
