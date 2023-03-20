@@ -6,7 +6,9 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: const Center(child: Text('HOla')),
+      body: const Center(
+        child: Text('HOLA AUPDATE PORTAFOLIO'),
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
         child: const Icon(Icons.add),
