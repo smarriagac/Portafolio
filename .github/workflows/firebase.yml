@@ -1,25 +1,25 @@
-name: Firebase CI deploy
+name: Deploy Portafolio
 
 on:
   push:
-    branches: [main]
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+'
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v2
-      - uses: subosito/flutter-action@v1.4.0
+      - uses: actions/checkout@v3
+      - uses: subosito/flutter-action@v2
         with:
-          channel: "stable"
+          channel: 'stable'
 
-      - name: Build Flutter Web
+      - name: Compilando flutter web
         run: |
           flutter config --enable-web
           flutter pub get
           flutter build web --release
-      - name: Firebase Deploy
+      - name: Subida a firebase
         run: |
           sudo npm install -g firebase-tools
           firebase deploy --token ${{ secrets.FIREBASE_TOKEN }}
