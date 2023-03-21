@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+import 'presentation/global/theme/theme.dart';
 import 'presentation/routes/app_routes.dart';
 
 class MyApp extends StatefulWidget {
@@ -15,6 +17,7 @@ class _MyAppState extends State<MyApp> with RouterMixin {
       title: 'Portafolio',
       debugShowCheckedModeBanner: false,
       routerConfig: router,
+      theme: getTheme(true),
     );
   }
 }

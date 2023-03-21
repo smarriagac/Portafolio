@@ -14,13 +14,23 @@ class HomeView extends ConsumerWidget {
     log('ME IMPRIMI');
 
     return Scaffold(
-      body: Center(
-        child: Text('HOLA CONTADOR ${ref.watch(homeProvider)}'),
+      body: Stack(
+        children: [
+          Positioned(
+            left: 0,
+            right: 0,
+            child: Container(
+              height: kToolbarHeight,
+              color: Colors.red,
+            ),
+          ),
+          Center(
+            child: Text('HOLA CONTADOR ${ref.watch(homeProvider)}'),
+          ),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => ref.read(homeProvider.notifier).state++,
-        child: const Icon(Icons.add),
-      ),
+          onPressed: () => ref.read(homeProvider.notifier).state++),
     );
   }
 }
