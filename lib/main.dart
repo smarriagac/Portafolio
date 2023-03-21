@@ -8,7 +8,7 @@ import 'app/my_app.dart';
 void main() {
   setPathUrlStrategy();
   WidgetsFlutterBinding.ensureInitialized();
-  LocaleSettings.setLocale(AppLocale.en);
+  LocaleSettings.setLocale(AppLocale.es);
   runApp(
     ProviderScope(
       child: TranslationProvider(
