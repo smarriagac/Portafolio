@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 final homeProvider = StateProvider<int>((ref) => 0);
 
@@ -10,11 +10,17 @@ final homeScrollController = ChangeNotifierProvider<ScrollController>(
 class ScrollController extends ChangeNotifier {
   final homeviewController = PageController();
 
+  int _page = 0;
+
+  int get page => _page;
+
+  set page(int value) {
+    _page = value;
+    notifyListeners();
+  }
+
   void onScrollViewPage(int i) {
-    homeviewController.animateToPage(
-      i,
-      duration: const Duration(milliseconds: 300),
-      curve: Curves.easeInOut,
-    );
+    page = i;
+    notifyListeners();
   }
 }

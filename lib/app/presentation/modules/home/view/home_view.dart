@@ -7,31 +7,31 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../global/app_color.dart';
 import '../../../global/extension/build_context_ext.dart';
-import '../../../routes/routes.dart';
 import '../controller/home_controller.dart';
 
 class HomeView extends ConsumerWidget {
-  const HomeView({Key? key}) : super(key: key);
+  const HomeView({
+    Key? key,
+    required this.body,
+  }) : super(key: key);
+
+  final Widget body;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     // final count = ref.watch(homeProvider);
-    log('ME IMPRIMI');
 
     return Scaffold(
-      body: Stack(
+      body: Row(
         children: [
-          const Positioned(
-            left: 0,
-            right: 0,
+          const Expanded(
+            flex: 2,
             child: NavBar(),
           ),
-          Positioned(
-            top: kToolbarHeight,
-            height: context.hg - kToolbarHeight,
-            width: context.wd,
-            child: const BodyHome(),
-          ),
+          Expanded(
+            flex: 8,
+            child: body,
+          )
         ],
       ),
     );
@@ -72,25 +72,34 @@ class NavBar extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final items = <String>[
       'Inicio',
-      'Acerca de mi',
-      'Portafolio',
-      'Contacto',
+      'Inicio two',
+      'Inicio three',
+      'Inicio four',
     ];
 
     return SizedBox(
-      height: kToolbarHeight,
+      height: double.maxFinite,
       // color: Colors.red,
-      width: double.maxFinite,
+      // width: double.maxFinite,
       child: Padding(
         padding: const EdgeInsets.only(right: 10),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: List.generate(
-            items.length,
-            (i) => ItemNavBar(
-              title: items[i],
-              index: i,
-            ),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              SizedBox(height: context.hp(10)),
+              const CircleAvatar(maxRadius: 50),
+              const SizedBox(height: 20),
+              ...List.generate(
+                items.length,
+                (i) => ItemNavBar(
+                  title: items[i],
+                  index: i,
+                ),
+              ),
+            ],
           ),
         ),
       ),
@@ -107,11 +116,15 @@ class ItemNavBar extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final onIsMouseHover = useState(false);
 
+    final page = ref.watch(homeScrollController).page;
+
+    final String location = GoRouterState.of(context).location;
+
     final String routesNamed = {
-      0: Routes.INICIO,
-      1: Routes.ACERDADE,
-      2: Routes.PORTAFOLIO,
-      3: Routes.CONTACTOS,
+      0: '/inicio',
+      1: '/acercade',
+      2: '/portafolio',
+      3: '/contactos',
     }[index]!;
 
     return MouseRegion(
@@ -121,25 +134,41 @@ class ItemNavBar extends HookConsumerWidget {
       onExit: (event) => onIsMouseHover.value = false,
       child: GestureDetector(
         onTap: () {
-          context.goNamed(routesNamed);
-          ref.read(homeScrollController).onScrollViewPage(index);
+          context.go(routesNamed);
+          // ref.read(homeScrollController).onScrollViewPage(index);
         },
-        child: AnimatedContainer(
-          decoration: BoxDecoration(
-              color: onIsMouseHover.value
-                  ? AppColors.secondaryColor
-                  : Colors.transparent,
-              borderRadius: BorderRadius.circular(8)),
-          duration: const Duration(milliseconds: 300),
-          padding: const EdgeInsets.all(5).copyWith(left: 20, right: 20),
-          child: Text(
-            title,
-            // style: context.textTheme.titleMedium!.copyWith(
-            //   color: !onIsMouseHover.value
-            //       ? AppColors.white
-            //       : AppColors.secondaryColor,
-            // ),
-          ),
+        child: Stack(
+          children: [
+            AnimatedContainer(
+              duration: const Duration(milliseconds: 500),
+              curve: Curves.bounceInOut,
+              width: double.infinity,
+              height: 50,
+              color: !(location == routesNamed)
+                  ? Colors.transparent
+                  : AppColors.secondaryColor,
+            ),
+            Center(
+              child: AnimatedContainer(
+                decoration: BoxDecoration(
+                    color: onIsMouseHover.value
+                        ? AppColors.secondaryColor
+                        : Colors.transparent,
+                    borderRadius: BorderRadius.circular(8)),
+                duration: const Duration(milliseconds: 300),
+                padding: const EdgeInsets.all(5).copyWith(left: 20, right: 20),
+                child: Text(
+                  title,
+                  style: context.textTheme.titleMedium!.copyWith(
+                    fontSize: 20,
+                    color: (location == routesNamed)
+                        ? AppColors.white
+                        : AppColors.secondaryColor,
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );
