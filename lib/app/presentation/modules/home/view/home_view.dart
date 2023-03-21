@@ -1,9 +1,13 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:go_router/go_router.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../../../global/app_color.dart';
 import '../../../global/extension/build_context_ext.dart';
+import '../../../routes/routes.dart';
 import '../controller/home_controller.dart';
 
 class HomeView extends ConsumerWidget {
@@ -30,8 +34,6 @@ class HomeView extends ConsumerWidget {
           ),
         ],
       ),
-      floatingActionButton: FloatingActionButton(
-          onPressed: () => ref.read(homeProvider.notifier).state++),
     );
   }
 }
@@ -68,32 +70,77 @@ class NavBar extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final controller = ref.read(homeScrollController);
+    final items = <String>[
+      'Inicio',
+      'Acerca de mi',
+      'Portafolio',
+      'Contacto',
+    ];
 
     return SizedBox(
       height: kToolbarHeight,
       // color: Colors.red,
       width: double.maxFinite,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          MouseRegion(
-            cursor: MouseCursor.uncontrolled,
-            onHover: (event) {
-              if (event.distanceMax.isFinite) {
-                controller.onScrollViewPage(1);
-              }
-            },
-            child: const Text('Inicio'),
+      child: Padding(
+        padding: const EdgeInsets.only(right: 10),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: List.generate(
+            items.length,
+            (i) => ItemNavBar(
+              title: items[i],
+              index: i,
+            ),
           ),
-          const SizedBox(width: 20),
-          const Text('Acerca de mi'),
-          const SizedBox(width: 20),
-          const Text('Portafolio'),
-          const SizedBox(width: 20),
-          const Text('Contacto'),
-          const SizedBox(width: 20),
-        ],
+        ),
+      ),
+    );
+  }
+}
+
+class ItemNavBar extends HookConsumerWidget {
+  const ItemNavBar({super.key, this.title = 'Inicio', required this.index});
+  final String title;
+  final int index;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final onIsMouseHover = useState(false);
+
+    final String routesNamed = {
+      0: Routes.INICIO,
+      1: Routes.ACERDADE,
+      2: Routes.PORTAFOLIO,
+      3: Routes.CONTACTOS,
+    }[index]!;
+
+    return MouseRegion(
+      hitTestBehavior: HitTestBehavior.translucent,
+      cursor: SystemMouseCursors.click,
+      onHover: (event) => onIsMouseHover.value = true,
+      onExit: (event) => onIsMouseHover.value = false,
+      child: GestureDetector(
+        onTap: () {
+          context.goNamed(routesNamed);
+          ref.read(homeScrollController).onScrollViewPage(index);
+        },
+        child: AnimatedContainer(
+          decoration: BoxDecoration(
+              color: onIsMouseHover.value
+                  ? AppColors.secondaryColor
+                  : Colors.transparent,
+              borderRadius: BorderRadius.circular(8)),
+          duration: const Duration(milliseconds: 300),
+          padding: const EdgeInsets.all(5).copyWith(left: 20, right: 20),
+          child: Text(
+            title,
+            // style: context.textTheme.titleMedium!.copyWith(
+            //   color: !onIsMouseHover.value
+            //       ? AppColors.white
+            //       : AppColors.secondaryColor,
+            // ),
+          ),
+        ),
       ),
     );
   }
