@@ -116,8 +116,6 @@ class ItemNavBar extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final onIsMouseHover = useState(false);
 
-    final page = ref.watch(homeScrollController).page;
-
     final String location = GoRouterState.of(context).location;
 
     final String routesNamed = {

@@ -1,0 +1,9 @@
+{
+    "nameComplete": {
+        "name":  "Mi nombre es, {{name}}"
+     },
+    "dropdownButton": {
+       "last24": "Últimas 24h",
+       "lastWeek": "Últimas semana"
+    }
+}
