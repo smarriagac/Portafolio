@@ -9,9 +9,8 @@ class SectionOneView extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return SingleChildScrollView(
-      child: Container(
+      child: SizedBox(
         height: context.hg,
-        color: Colors.amberAccent,
         child: Center(
           child: Text(
             context.t.home.nameComplete.name(name: 'Sebastian Marriaga'),

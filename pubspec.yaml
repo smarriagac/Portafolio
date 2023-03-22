@@ -47,6 +47,7 @@ dependencies:
   slang: ^3.11.1
   slang_flutter: ^3.11.0
   intl: ^0.17.0
+  lite_rolling_switch: ^1.0.0
 
 
 dev_dependencies:

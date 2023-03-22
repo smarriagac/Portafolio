@@ -5,6 +5,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../../../../generated/translations.g.dart';
 import '../../../global/app_color.dart';
 import '../../../global/extension/build_context_ext.dart';
 import '../controller/home_controller.dart';
@@ -63,13 +64,15 @@ class BodyHome extends ConsumerWidget {
   }
 }
 
-class NavBar extends ConsumerWidget {
+class NavBar extends HookConsumerWidget {
   const NavBar({
     super.key,
   });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final changeLanguale = useState(false);
+
     final items = <String>[
       'Inicio',
       'Inicio two',
@@ -77,30 +80,55 @@ class NavBar extends ConsumerWidget {
       'Inicio four',
     ];
 
-    return SizedBox(
+    return Container(
+      decoration: BoxDecoration(
+        border: Border(
+          right: BorderSide(
+            color: AppColors.primarySwatch.shade800,
+            width: 0.2,
+          ),
+        ),
+      ),
       height: double.maxFinite,
-      // color: Colors.red,
-      // width: double.maxFinite,
       child: Padding(
         padding: const EdgeInsets.only(right: 10),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              SizedBox(height: context.hp(10)),
-              const CircleAvatar(maxRadius: 50),
-              const SizedBox(height: 20),
-              ...List.generate(
-                items.length,
-                (i) => ItemNavBar(
-                  title: items[i],
-                  index: i,
-                ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            const SizedBox(height: 20),
+            const FlutterLogo(size: 50),
+            const SizedBox(height: 20),
+            const Divider(),
+            const SizedBox(height: 20),
+            ...List.generate(
+              items.length,
+              (i) => ItemNavBar(
+                title: items[i],
+                index: i,
               ),
-            ],
-          ),
+            ),
+            const Spacer(),
+            Container(
+              color: Colors.red,
+              child: Row(
+                children: [
+                  const Text('ES'),
+                  Switch(
+                    value: changeLanguale.value,
+                    onChanged: (state) {
+                      LocaleSettings.setLocale(
+                        state ? AppLocale.en : AppLocale.es,
+                      );
+                      changeLanguale.value = state;
+                    },
+                  ),
+                  const Text('EN'),
+                ],
+              ),
+            ),
+            const SizedBox(height: 10),
+          ],
         ),
       ),
     );
@@ -114,8 +142,6 @@ class ItemNavBar extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final onIsMouseHover = useState(false);
-
     final String location = GoRouterState.of(context).location;
 
     final String routesNamed = {
@@ -125,48 +151,30 @@ class ItemNavBar extends HookConsumerWidget {
       3: '/contactos',
     }[index]!;
 
-    return MouseRegion(
-      hitTestBehavior: HitTestBehavior.translucent,
-      cursor: SystemMouseCursors.click,
-      onHover: (event) => onIsMouseHover.value = true,
-      onExit: (event) => onIsMouseHover.value = false,
-      child: GestureDetector(
-        onTap: () {
-          context.go(routesNamed);
-          // ref.read(homeScrollController).onScrollViewPage(index);
-        },
-        child: Stack(
-          children: [
-            AnimatedContainer(
-              duration: const Duration(milliseconds: 500),
-              curve: Curves.bounceInOut,
-              width: double.infinity,
-              height: 50,
-              color: !(location == routesNamed)
-                  ? Colors.transparent
-                  : AppColors.secondaryColor,
-            ),
-            Center(
-              child: AnimatedContainer(
-                decoration: BoxDecoration(
-                    color: onIsMouseHover.value
-                        ? AppColors.secondaryColor
-                        : Colors.transparent,
-                    borderRadius: BorderRadius.circular(8)),
-                duration: const Duration(milliseconds: 300),
-                padding: const EdgeInsets.all(5).copyWith(left: 20, right: 20),
-                child: Text(
-                  title,
-                  style: context.textTheme.titleMedium!.copyWith(
-                    fontSize: 20,
-                    color: (location == routesNamed)
-                        ? AppColors.white
-                        : AppColors.secondaryColor,
-                  ),
-                ),
-              ),
-            ),
-          ],
+    final IconData icons = {
+      0: Icons.home,
+      1: Icons.accessible_rounded,
+      2: Icons.u_turn_left,
+      3: Icons.kayaking,
+    }[index]!;
+
+    return AnimatedContainer(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(8),
+      ),
+      duration: const Duration(milliseconds: 300),
+      padding: const EdgeInsets.all(5).copyWith(left: 20, right: 20),
+      child: ListTile(
+        onTap: () => context.go(routesNamed),
+        leading: Icon(icons),
+        title: Text(
+          title,
+          style: context.textTheme.labelSmall!.copyWith(
+            fontSize: 18,
+            color: !(location == routesNamed)
+                ? AppColors.white.withOpacity(0.3)
+                : AppColors.secondaryColor,
+          ),
         ),
       ),
     );
