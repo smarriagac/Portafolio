@@ -158,25 +158,40 @@ class ItemNavBar extends HookConsumerWidget {
       3: Icons.kayaking,
     }[index]!;
 
-    return AnimatedContainer(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(8),
-      ),
-      duration: const Duration(milliseconds: 300),
-      padding: const EdgeInsets.all(5).copyWith(left: 20, right: 20),
-      child: ListTile(
-        onTap: () => context.go(routesNamed),
-        leading: Icon(icons),
-        title: Text(
-          title,
-          style: context.textTheme.labelSmall!.copyWith(
-            fontSize: 18,
-            color: !(location == routesNamed)
+    final validationRoute = !(location == routesNamed);
+
+    return Stack(
+      children: [
+        AnimatedPositioned(
+          duration: const Duration(milliseconds: 300),
+          height: 56,
+          left: 0,
+          width: !validationRoute ? 288 : 0,
+          child: Container(
+            decoration: BoxDecoration(
+              color: AppColors.primarySwatch.shade700.withOpacity(0.3),
+            ),
+          ),
+        ),
+        ListTile(
+          onTap: () => context.go(routesNamed),
+          leading: Icon(
+            icons,
+            color: validationRoute
                 ? AppColors.white.withOpacity(0.3)
                 : AppColors.secondaryColor,
           ),
+          title: Text(
+            title,
+            style: context.textTheme.labelSmall!.copyWith(
+              fontSize: 18,
+              color: validationRoute
+                  ? AppColors.white.withOpacity(0.3)
+                  : AppColors.secondaryColor,
+            ),
+          ),
         ),
-      ),
+      ],
     );
   }
 }
