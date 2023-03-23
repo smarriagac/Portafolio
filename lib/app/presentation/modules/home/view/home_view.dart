@@ -74,10 +74,10 @@ class NavBar extends HookConsumerWidget {
     final changeLanguale = useState(false);
 
     final items = <String>[
-      'Inicio',
-      'Inicio two',
-      'Inicio three',
-      'Inicio four',
+      t.drawell.items.home,
+      t.drawell.items.aboutme,
+      t.drawell.items.portfolio,
+      t.drawell.items.contact,
     ];
 
     return Container(
@@ -110,7 +110,9 @@ class NavBar extends HookConsumerWidget {
             ),
             const Spacer(),
             Container(
-              color: Colors.red,
+              width: context.wd,
+              margin: const EdgeInsets.symmetric(horizontal: 20),
+              alignment: Alignment.centerRight,
               child: Row(
                 children: [
                   const Text('ES'),

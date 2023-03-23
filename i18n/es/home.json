@@ -1,9 +1,10 @@
 {
-    "nameComplete": {
-        "name":  "Mi nombre es, {{name}}"
-     },
+    "name":  "Hola yo soy,",
+    "occupation": "Soy desarrollador movil",
+    "passion": "Ingeniero Electrónico entusiasta por conocer nuevas técnologias.",
     "dropdownButton": {
        "last24": "Últimas 24h",
        "lastWeek": "Últimas semana"
     }
 }
+

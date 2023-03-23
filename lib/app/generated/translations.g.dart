@@ -1,9 +1,9 @@
 /// Generated file. Do not edit.
 ///
 /// Locales: 2
-/// Strings: 30 (15 per locale)
+/// Strings: 24 (12 per locale)
 ///
-/// Built on 2023-03-21 at 21:46 UTC
+/// Built on 2023-03-23 at 04:14 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -147,33 +147,19 @@ class _TranslationsEn implements BaseTranslations<AppLocale, _TranslationsEn> {
 	late final _TranslationsEn _root = this; // ignore: unused_field
 
 	// Translations
-	late final _TranslationsSignInEn signIn = _TranslationsSignInEn._(_root);
-	late final _TranslationsMiscEn misc = _TranslationsMiscEn._(_root);
+	late final _TranslationsDrawellEn drawell = _TranslationsDrawellEn._(_root);
 	late final _TranslationsHomeEn home = _TranslationsHomeEn._(_root);
+	late final _TranslationsAboutmeEn aboutme = _TranslationsAboutmeEn._(_root);
 }
 
-// Path: signIn
-class _TranslationsSignInEn {
-	_TranslationsSignInEn._(this._root);
+// Path: drawell
+class _TranslationsDrawellEn {
+	_TranslationsDrawellEn._(this._root);
 
 	final _TranslationsEn _root; // ignore: unused_field
 
 	// Translations
-	String get username => 'Username';
-	String get password => 'Password';
-	late final _TranslationsSignInErrorsEn errors = _TranslationsSignInErrorsEn._(_root);
-	String get signIn => 'Sign in';
-}
-
-// Path: misc
-class _TranslationsMiscEn {
-	_TranslationsMiscEn._(this._root);
-
-	final _TranslationsEn _root; // ignore: unused_field
-
-	// Translations
-	String get requesFailed => 'Rquest Failed';
-	String get retry => 'Retry';
+	late final _TranslationsDrawellItemsEn items = _TranslationsDrawellItemsEn._(_root);
 }
 
 // Path: home
@@ -183,30 +169,35 @@ class _TranslationsHomeEn {
 	final _TranslationsEn _root; // ignore: unused_field
 
 	// Translations
-	late final _TranslationsHomeNameCompleteEn nameComplete = _TranslationsHomeNameCompleteEn._(_root);
+	String get name => 'Hello I am,';
+	String get occupation => 'I am a mobile developer';
+	String get passion => 'Electronics Engineer enthusiastic about new technologies.';
 	late final _TranslationsHomeDropdownButtonEn dropdownButton = _TranslationsHomeDropdownButtonEn._(_root);
 }
 
-// Path: signIn.errors
-class _TranslationsSignInErrorsEn {
-	_TranslationsSignInErrorsEn._(this._root);
+// Path: aboutme
+class _TranslationsAboutmeEn {
+	_TranslationsAboutmeEn._(this._root);
 
 	final _TranslationsEn _root; // ignore: unused_field
 
 	// Translations
-	String get username => 'Invalid username';
-	String get password => 'Invalid password';
-	late final _TranslationsSignInErrorsSubmitEn submit = _TranslationsSignInErrorsSubmitEn._(_root);
+	String get aboutme => 'About me';
+	String get aboutmedescription => 'I am an Electronic Engineer by profession, a lover of programming and high impact development. I am fond of app development and with the goal of automating traditional processes through technology and innovation.';
+	String get skills => 'Skills';
 }
 
-// Path: home.nameComplete
-class _TranslationsHomeNameCompleteEn {
-	_TranslationsHomeNameCompleteEn._(this._root);
+// Path: drawell.items
+class _TranslationsDrawellItemsEn {
+	_TranslationsDrawellItemsEn._(this._root);
 
 	final _TranslationsEn _root; // ignore: unused_field
 
 	// Translations
-	String name({required Object name}) => 'My name is, ${name}';
+	String get home => 'Home';
+	String get aboutme => 'About me';
+	String get portfolio => 'Portafolio';
+	String get contact => 'Contact';
 }
 
 // Path: home.dropdownButton
@@ -218,20 +209,6 @@ class _TranslationsHomeDropdownButtonEn {
 	// Translations
 	String get last24 => 'Last 24h';
 	String get lastWeek => 'Last week';
-}
-
-// Path: signIn.errors.submit
-class _TranslationsSignInErrorsSubmitEn {
-	_TranslationsSignInErrorsSubmitEn._(this._root);
-
-	final _TranslationsEn _root; // ignore: unused_field
-
-	// Translations
-	String get notFound => 'Not Found';
-	String get network => 'Network error';
-	String get unauthorized => 'Invalid password';
-	String get unknow => 'Error';
-	String get notVerified => 'Email not verified';
 }
 
 // Path: <root>
@@ -260,33 +237,19 @@ class _TranslationsEs extends _TranslationsEn {
 	@override late final _TranslationsEs _root = this; // ignore: unused_field
 
 	// Translations
-	@override late final _TranslationsSignInEs signIn = _TranslationsSignInEs._(_root);
-	@override late final _TranslationsMiscEs misc = _TranslationsMiscEs._(_root);
+	@override late final _TranslationsDrawellEs drawell = _TranslationsDrawellEs._(_root);
 	@override late final _TranslationsHomeEs home = _TranslationsHomeEs._(_root);
+	@override late final _TranslationsAboutmeEs aboutme = _TranslationsAboutmeEs._(_root);
 }
 
-// Path: signIn
-class _TranslationsSignInEs extends _TranslationsSignInEn {
-	_TranslationsSignInEs._(_TranslationsEs root) : this._root = root, super._(root);
+// Path: drawell
+class _TranslationsDrawellEs extends _TranslationsDrawellEn {
+	_TranslationsDrawellEs._(_TranslationsEs root) : this._root = root, super._(root);
 
 	@override final _TranslationsEs _root; // ignore: unused_field
 
 	// Translations
-	@override String get username => 'Usuario';
-	@override String get password => 'Contraseña';
-	@override late final _TranslationsSignInErrorsEs errors = _TranslationsSignInErrorsEs._(_root);
-	@override String get signIn => 'Iniciar Sesión';
-}
-
-// Path: misc
-class _TranslationsMiscEs extends _TranslationsMiscEn {
-	_TranslationsMiscEs._(_TranslationsEs root) : this._root = root, super._(root);
-
-	@override final _TranslationsEs _root; // ignore: unused_field
-
-	// Translations
-	@override String get requesFailed => 'Solicitud fallida';
-	@override String get retry => 'Reintentar';
+	@override late final _TranslationsDrawellItemsEs items = _TranslationsDrawellItemsEs._(_root);
 }
 
 // Path: home
@@ -296,30 +259,35 @@ class _TranslationsHomeEs extends _TranslationsHomeEn {
 	@override final _TranslationsEs _root; // ignore: unused_field
 
 	// Translations
-	@override late final _TranslationsHomeNameCompleteEs nameComplete = _TranslationsHomeNameCompleteEs._(_root);
+	@override String get name => 'Hola yo soy,';
+	@override String get occupation => 'Soy desarrollador movil';
+	@override String get passion => 'Ingeniero Electrónico entusiasta por conocer nuevas técnologias.';
 	@override late final _TranslationsHomeDropdownButtonEs dropdownButton = _TranslationsHomeDropdownButtonEs._(_root);
 }
 
-// Path: signIn.errors
-class _TranslationsSignInErrorsEs extends _TranslationsSignInErrorsEn {
-	_TranslationsSignInErrorsEs._(_TranslationsEs root) : this._root = root, super._(root);
+// Path: aboutme
+class _TranslationsAboutmeEs extends _TranslationsAboutmeEn {
+	_TranslationsAboutmeEs._(_TranslationsEs root) : this._root = root, super._(root);
 
 	@override final _TranslationsEs _root; // ignore: unused_field
 
 	// Translations
-	@override String get username => 'Usuario inválido';
-	@override String get password => 'Contraseña inválida';
-	@override late final _TranslationsSignInErrorsSubmitEs submit = _TranslationsSignInErrorsSubmitEs._(_root);
+	@override String get aboutme => 'Sobre mi';
+	@override String get aboutmedescription => 'Yo soy Ingeniero Electrónico de profesión amante de la programación y al desarrollo de alto impacto. Aficionado al desarrollo de app y con la meta de automatizar procesos tradicionales atravez de la tecnologia e innovación.';
+	@override String get skills => 'Habilidades';
 }
 
-// Path: home.nameComplete
-class _TranslationsHomeNameCompleteEs extends _TranslationsHomeNameCompleteEn {
-	_TranslationsHomeNameCompleteEs._(_TranslationsEs root) : this._root = root, super._(root);
+// Path: drawell.items
+class _TranslationsDrawellItemsEs extends _TranslationsDrawellItemsEn {
+	_TranslationsDrawellItemsEs._(_TranslationsEs root) : this._root = root, super._(root);
 
 	@override final _TranslationsEs _root; // ignore: unused_field
 
 	// Translations
-	@override String name({required Object name}) => 'Mi nombre es, ${name}';
+	@override String get home => 'Inicio';
+	@override String get aboutme => 'Acerca de mi';
+	@override String get portfolio => 'Portafolio';
+	@override String get contact => 'Contacto';
 }
 
 // Path: home.dropdownButton
@@ -333,41 +301,24 @@ class _TranslationsHomeDropdownButtonEs extends _TranslationsHomeDropdownButtonE
 	@override String get lastWeek => 'Últimas semana';
 }
 
-// Path: signIn.errors.submit
-class _TranslationsSignInErrorsSubmitEs extends _TranslationsSignInErrorsSubmitEn {
-	_TranslationsSignInErrorsSubmitEs._(_TranslationsEs root) : this._root = root, super._(root);
-
-	@override final _TranslationsEs _root; // ignore: unused_field
-
-	// Translations
-	@override String get notFound => 'Usuario no encontrado';
-	@override String get network => 'Error de conexión';
-	@override String get unauthorized => 'Contraseña inválida';
-	@override String get unknow => 'Error';
-	@override String get notVerified => 'Email no verificaco';
-}
-
 /// Flat map(s) containing all translations.
 /// Only for edge cases! For simple maps, use the map function of this library.
 
 extension on _TranslationsEn {
 	dynamic _flatMapFunction(String path) {
 		switch (path) {
-			case 'signIn.username': return 'Username';
-			case 'signIn.password': return 'Password';
-			case 'signIn.errors.username': return 'Invalid username';
-			case 'signIn.errors.password': return 'Invalid password';
-			case 'signIn.errors.submit.notFound': return 'Not Found';
-			case 'signIn.errors.submit.network': return 'Network error';
-			case 'signIn.errors.submit.unauthorized': return 'Invalid password';
-			case 'signIn.errors.submit.unknow': return 'Error';
-			case 'signIn.errors.submit.notVerified': return 'Email not verified';
-			case 'signIn.signIn': return 'Sign in';
-			case 'misc.requesFailed': return 'Rquest Failed';
-			case 'misc.retry': return 'Retry';
-			case 'home.nameComplete.name': return ({required Object name}) => 'My name is, ${name}';
+			case 'drawell.items.home': return 'Home';
+			case 'drawell.items.aboutme': return 'About me';
+			case 'drawell.items.portfolio': return 'Portafolio';
+			case 'drawell.items.contact': return 'Contact';
+			case 'home.name': return 'Hello I am,';
+			case 'home.occupation': return 'I am a mobile developer';
+			case 'home.passion': return 'Electronics Engineer enthusiastic about new technologies.';
 			case 'home.dropdownButton.last24': return 'Last 24h';
 			case 'home.dropdownButton.lastWeek': return 'Last week';
+			case 'aboutme.aboutme': return 'About me';
+			case 'aboutme.aboutmedescription': return 'I am an Electronic Engineer by profession, a lover of programming and high impact development. I am fond of app development and with the goal of automating traditional processes through technology and innovation.';
+			case 'aboutme.skills': return 'Skills';
 			default: return null;
 		}
 	}
@@ -376,21 +327,18 @@ extension on _TranslationsEn {
 extension on _TranslationsEs {
 	dynamic _flatMapFunction(String path) {
 		switch (path) {
-			case 'signIn.username': return 'Usuario';
-			case 'signIn.password': return 'Contraseña';
-			case 'signIn.errors.username': return 'Usuario inválido';
-			case 'signIn.errors.password': return 'Contraseña inválida';
-			case 'signIn.errors.submit.notFound': return 'Usuario no encontrado';
-			case 'signIn.errors.submit.network': return 'Error de conexión';
-			case 'signIn.errors.submit.unauthorized': return 'Contraseña inválida';
-			case 'signIn.errors.submit.unknow': return 'Error';
-			case 'signIn.errors.submit.notVerified': return 'Email no verificaco';
-			case 'signIn.signIn': return 'Iniciar Sesión';
-			case 'misc.requesFailed': return 'Solicitud fallida';
-			case 'misc.retry': return 'Reintentar';
-			case 'home.nameComplete.name': return ({required Object name}) => 'Mi nombre es, ${name}';
+			case 'drawell.items.home': return 'Inicio';
+			case 'drawell.items.aboutme': return 'Acerca de mi';
+			case 'drawell.items.portfolio': return 'Portafolio';
+			case 'drawell.items.contact': return 'Contacto';
+			case 'home.name': return 'Hola yo soy,';
+			case 'home.occupation': return 'Soy desarrollador movil';
+			case 'home.passion': return 'Ingeniero Electrónico entusiasta por conocer nuevas técnologias.';
 			case 'home.dropdownButton.last24': return 'Últimas 24h';
 			case 'home.dropdownButton.lastWeek': return 'Últimas semana';
+			case 'aboutme.aboutme': return 'Sobre mi';
+			case 'aboutme.aboutmedescription': return 'Yo soy Ingeniero Electrónico de profesión amante de la programación y al desarrollo de alto impacto. Aficionado al desarrollo de app y con la meta de automatizar procesos tradicionales atravez de la tecnologia e innovación.';
+			case 'aboutme.skills': return 'Habilidades';
 			default: return null;
 		}
 	}

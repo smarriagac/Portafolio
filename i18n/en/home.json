@@ -1,10 +1,10 @@
-{
-    
-    "nameComplete": {
-       "name":  "My name is, {{name}}"
-    },
+{   
+   "name":  "Hello I am,",
+   "occupation": "I am a mobile developer",
+   "passion": "Electronics Engineer enthusiastic about new technologies.",
     "dropdownButton": {
        "last24": "Last 24h",
        "lastWeek": "Last week"
     }
 }
+

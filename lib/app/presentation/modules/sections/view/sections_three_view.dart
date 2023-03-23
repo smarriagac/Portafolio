@@ -6,7 +6,6 @@ class SectionThreeView extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Container(
-      color: Colors.blueAccent,
       child: const Center(
         child: Text('Section THREE'),
       ),
