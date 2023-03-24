@@ -1,12 +1,12 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../../generated/translations.g.dart';
 import '../../../global/app_color.dart';
+import '../../../global/controller/translation_controller.dart';
 import '../../../global/extension/build_context_ext.dart';
 import '../controller/home_controller.dart';
 
@@ -71,7 +71,7 @@ class NavBar extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final changeLanguale = useState(false);
+    // final changeLanguaje = useState(false);
 
     final items = <String>[
       t.drawell.items.home,
@@ -79,6 +79,8 @@ class NavBar extends HookConsumerWidget {
       t.drawell.items.portfolio,
       t.drawell.items.contact,
     ];
+
+    final changeLanguaje = ref.watch(translationProvider);
 
     return Container(
       decoration: BoxDecoration(
@@ -117,13 +119,10 @@ class NavBar extends HookConsumerWidget {
                 children: [
                   const Text('ES'),
                   Switch(
-                    value: changeLanguale.value,
-                    onChanged: (state) {
-                      LocaleSettings.setLocale(
-                        state ? AppLocale.en : AppLocale.es,
-                      );
-                      changeLanguale.value = state;
-                    },
+                    value: changeLanguaje,
+                    onChanged: (state) => ref
+                        .read(translationProvider.notifier)
+                        .onChangeLanguaje(state),
                   ),
                   const Text('EN'),
                 ],
